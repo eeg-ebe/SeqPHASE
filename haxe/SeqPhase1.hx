@@ -106,7 +106,7 @@ class SeqPhase1 {
             }
             var mapLen:Int = 0;
             var mapLenWithoutNs:Int = 0;
-            var lastKey:String;
+            var lastKey:String = null;
             for(key in m.keys()) {
                 lastKey = key;
                 mapLen++;
