@@ -1,4 +1,3 @@
-(function ($global) { "use strict";
 function $extend(from, fields) {
 	var proto = Object.create(from);
 	for (var name in fields) proto[name] = fields[name];
@@ -1319,5 +1318,3 @@ SeqPhase1.code = (function($this) {
 	$r = _g;
 	return $r;
 }(this));
-SeqPhase1.main();
-})({});
