@@ -342,6 +342,37 @@ var FastaAlignmentParser = function(fileContent,allChecks,allSort,fileNr) {
 				}
 			}
 		}
+		var map_h = Object.create(null);
+		var _g = 0;
+		var _g1 = this.fastaContent;
+		while(_g < _g1.length) {
+			var entry = _g1[_g];
+			++_g;
+			var name = entry.getName();
+			name = name.substring(0,name.length - 1);
+			if(Object.prototype.hasOwnProperty.call(map_h,name)) {
+				var i = map_h[name];
+				map_h[name] = i + 1;
+			} else {
+				map_h[name] = 1;
+			}
+		}
+		var h = map_h;
+		var _g6_h = h;
+		var _g6_keys = Object.keys(h);
+		var _g6_length = _g6_keys.length;
+		var _g6_current = 0;
+		while(_g6_current < _g6_length) {
+			var name = _g6_keys[_g6_current++];
+			var i = map_h[name];
+			if(i != 2) {
+				if(i == 1) {
+					SeqPhase1Result.instance().addWrn("Found only one haplotype sequence for name '" + name + "'!",fileNr);
+				} else {
+					SeqPhase1Result.instance().addWrn("Found " + i + " haplotype sequences for name '" + name + "'!",fileNr);
+				}
+			}
+		}
 	}
 };
 FastaAlignmentParser.__name__ = true;

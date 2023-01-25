@@ -166,6 +166,28 @@ class FastaAlignmentParser {
                     }
                 }
             }
+            // check pairs
+            var map:StringMap<Int> = new StringMap<Int>();
+            for (entry in fastaContent) {
+                var name:String = entry.getName();
+                name = name.substring(0, name.length - 1);
+                if (map.exists(name)) {
+                    var i:Int = map.get(name);
+                    map.set(name, i + 1);
+                } else {
+                    map.set(name, 1);
+                }
+            }
+            for (name in map.keys()) {
+                var i:Int = map.get(name);
+                if (i != 2) {
+                    if (i == 1) {
+                        SeqPhase1Result.instance().addWrn("Found only one haplotype sequence for name '" + name + "'!", fileNr);
+                    } else {
+                        SeqPhase1Result.instance().addWrn("Found " + i + " haplotype sequences for name '" + name + "'!", fileNr);
+                    }
+                }
+            }
         }
     }
 

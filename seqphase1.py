@@ -353,6 +353,28 @@ class FastaAlignmentParser:
                         SeqPhase1Result.instance().addErr(("Only one haplotype sequence found for individual " + HxOverrides.stringOrNull(entry.getName())),fileNr)
                     else:
                         lastName = None
+            _hx_map = haxe_ds_StringMap()
+            _g = 0
+            _g1 = self.fastaContent
+            while (_g < len(_g1)):
+                entry = (_g1[_g] if _g >= 0 and _g < len(_g1) else None)
+                _g = (_g + 1)
+                name = entry.getName()
+                name = HxString.substring(name,0,(len(name) - 1))
+                if (name in _hx_map.h):
+                    i = _hx_map.h.get(name,None)
+                    _hx_map.h[name] = (i + 1)
+                else:
+                    _hx_map.h[name] = 1
+            name = _hx_map.keys()
+            while name.hasNext():
+                name1 = name.next()
+                i = _hx_map.h.get(name1,None)
+                if (i != 2):
+                    if (i == 1):
+                        SeqPhase1Result.instance().addWrn((("Found only one haplotype sequence for name '" + ("null" if name1 is None else name1)) + "'!"),fileNr)
+                    else:
+                        SeqPhase1Result.instance().addWrn((((("Found " + Std.string(i)) + " haplotype sequences for name '") + ("null" if name1 is None else name1)) + "'!"),fileNr)
 
     def getSeqLength(self):
         return self.seqLength
