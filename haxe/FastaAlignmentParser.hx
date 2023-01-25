@@ -181,10 +181,18 @@ class FastaAlignmentParser {
             for (name in map.keys()) {
                 var i:Int = map.get(name);
                 if (i != 2) {
+                    var lst:List<String> = new List<String>();
+                    for (entry in fastaContent) {
+                        var nameEntry:String = entry.getName();
+                        var subnameEntry:String = nameEntry.substring(0, nameEntry.length - 1);
+                        if (subnameEntry == name) {
+                            lst.add(nameEntry);
+                        }
+                    }
                     if (i == 1) {
-                        SeqPhase1Result.instance().addErr("Found only one haplotype sequence for name '" + name + "'!", fileNr);
+                        SeqPhase1Result.instance().addErr("Found only one haplotype sequence (" + lst.join(",") + ") for individual '" + name + "'!", fileNr);
                     } else {
-                        SeqPhase1Result.instance().addErr("Found " + i + " haplotype sequences for name '" + name + "'!", fileNr);
+                        SeqPhase1Result.instance().addErr("Found " + i + " haplotype sequences (" + lst.join(",") + ") for individual '" + name + "'!", fileNr);
                     }
                 }
             }

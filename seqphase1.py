@@ -369,10 +369,20 @@ class FastaAlignmentParser:
                 name1 = name.next()
                 i = _hx_map.h.get(name1,None)
                 if (i != 2):
+                    lst = haxe_ds_List()
+                    _g = 0
+                    _g1 = self.fastaContent
+                    while (_g < len(_g1)):
+                        entry = (_g1[_g] if _g >= 0 and _g < len(_g1) else None)
+                        _g = (_g + 1)
+                        nameEntry = entry.getName()
+                        subnameEntry = HxString.substring(nameEntry,0,(len(nameEntry) - 1))
+                        if (subnameEntry == name1):
+                            lst.add(nameEntry)
                     if (i == 1):
-                        SeqPhase1Result.instance().addErr((("Found only one haplotype sequence for name '" + ("null" if name1 is None else name1)) + "'!"),fileNr)
+                        SeqPhase1Result.instance().addErr((((("Found only one haplotype sequence (" + HxOverrides.stringOrNull(lst.join(","))) + ") for individual '") + ("null" if name1 is None else name1)) + "'!"),fileNr)
                     else:
-                        SeqPhase1Result.instance().addErr((((("Found " + Std.string(i)) + " haplotype sequences for name '") + ("null" if name1 is None else name1)) + "'!"),fileNr)
+                        SeqPhase1Result.instance().addErr((((((("Found " + Std.string(i)) + " haplotype sequences (") + HxOverrides.stringOrNull(lst.join(","))) + ") for individual '") + ("null" if name1 is None else name1)) + "'!"),fileNr)
 
     def getSeqLength(self):
         return self.seqLength

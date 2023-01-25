@@ -364,10 +364,22 @@ var FastaAlignmentParser = function(fileContent,allChecks,allSort,fileNr) {
 			var name = _g6_keys[_g6_current++];
 			var i = map_h[name];
 			if(i != 2) {
+				var lst = new haxe_ds_List();
+				var _g = 0;
+				var _g1 = this.fastaContent;
+				while(_g < _g1.length) {
+					var entry = _g1[_g];
+					++_g;
+					var nameEntry = entry.getName();
+					var subnameEntry = nameEntry.substring(0,nameEntry.length - 1);
+					if(subnameEntry == name) {
+						lst.add(nameEntry);
+					}
+				}
 				if(i == 1) {
-					SeqPhase1Result.instance().addErr("Found only one haplotype sequence for name '" + name + "'!",fileNr);
+					SeqPhase1Result.instance().addErr("Found only one haplotype sequence (" + lst.join(",") + ") for individual '" + name + "'!",fileNr);
 				} else {
-					SeqPhase1Result.instance().addErr("Found " + i + " haplotype sequences for name '" + name + "'!",fileNr);
+					SeqPhase1Result.instance().addErr("Found " + i + " haplotype sequences (" + lst.join(",") + ") for individual '" + name + "'!",fileNr);
 				}
 			}
 		}
