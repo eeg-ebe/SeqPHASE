@@ -160,7 +160,7 @@ class FastaAlignmentParser {
                     var curName:String = entry.getName();
                     curName = curName.substring(0, curName.length - 1);
                     if(lastName != curName) {
-                        SeqPhase1Result.instance().addErr("Only one haplotype sequence found for individual " + entry.getName(), fileNr);
+                        //SeqPhase1Result.instance().addErr("Only one haplotype sequence found for individual " + entry.getName(), fileNr);
                     } else {
                         lastName = null;
                     }
@@ -182,9 +182,9 @@ class FastaAlignmentParser {
                 var i:Int = map.get(name);
                 if (i != 2) {
                     if (i == 1) {
-                        SeqPhase1Result.instance().addWrn("Found only one haplotype sequence for name '" + name + "'!", fileNr);
+                        SeqPhase1Result.instance().addErr("Found only one haplotype sequence for name '" + name + "'!", fileNr);
                     } else {
-                        SeqPhase1Result.instance().addWrn("Found " + i + " haplotype sequences for name '" + name + "'!", fileNr);
+                        SeqPhase1Result.instance().addErr("Found " + i + " haplotype sequences for name '" + name + "'!", fileNr);
                     }
                 }
             }
