@@ -14,7 +14,7 @@
 
 import haxe.ds.IntMap;
 import haxe.ds.StringMap;
-#if sys
+#if (sys || hxnodejs)
 import sys.io.File;
 #end
 
@@ -265,7 +265,7 @@ class SeqPhase1 {
     }
 
     public static function main() {
-        #if sys
+        #if (sys || hxnodejs)
         Sys.stderr().writeString("SeqPHASE command-line version, Step 1: generating PHASE input files from FASTA alignments\n\n");
         Sys.stderr().writeString("Reference:\nFlot, J.-F. (2010) SeqPHASE: a web tool for interconverting PHASE input/output files and FASTA sequence alignments\nMolecular Ecology Ressources 10 (1): 162-166\n\n");
         Sys.stderr().writeString("Usage: perl seqphase1.pl -1 <first type of input file> -2 <second type of input file> -3 <third type of input file> -p <prefix>\nFirst type of input file = FASTA alignment of sequences from homozygous individuals and from heterozygotes to be phased (1 sequence per individual).\nSecond type of input file = FASTA alignment of alignment of fake haplotypes from heterozygotes to be phased (2 sequences per individual).\nThird type of input file (optional)= FASTA alignment of known haplotypes of previously phased heterozygotes (2 sequences per individual).\nPrefix for output files is optional, default prefix is 'phase'.\n\n");

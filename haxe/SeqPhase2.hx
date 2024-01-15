@@ -16,7 +16,7 @@ import haxe.ds.ArraySort;
 import haxe.ds.IntMap;
 import haxe.ds.StringMap;
 import haxe.ds.Vector;
-#if sys
+#if (sys || hxnodejs)
 import sys.io.File;
 #end
 
@@ -328,7 +328,7 @@ class SeqPhase2 {
     }
 
     public static function main() {
-        #if sys
+        #if (sys || hxnodejs)
         Sys.stderr().writeString("SeqPHASE commmand-line version, Step 2: converting PHASE output files into FASTA alignments\n\n");
         Sys.stderr().writeString("Reference:\nFlot, J.-F. (2010) SeqPHASE: a web tool for interconverting PHASE input/output files and FASTA sequence alignments\nMolecular Ecology Ressources 10 (1): 162-166\n\n");
         Sys.stderr().writeString("Usage: perl seqphase2.pl -c <constant position file> -i <input=PHASE output file> -o <output=FASTA file name> [-r for reduced output] [-s for sorted output] \nThe constant position file (optional) was generated during Step 1 (without such file, the output FASTA will only contain the variable positions).\nInput=PHASE output file (compulsory) may be either .out or .out_pairs.\nOutput=FASTA file name (when not specified, default is 'phased.fasta'): if generated from an .out file, it will contain a list of phased haplotypes with 1-letter indetermination code letters (R, W, M, Y, S or K) at positions where phase certainty is inferior to a certain threshold (90% if PHASE default running options were used); if generated from an .out_pairs file, it will contain all possible haplotype pairs for each individual with their respective probabilities shown between parentheses.\nThe FASTA output may be reduced to show only posterior probabilities inferior to 1 and only one sequence per homozygote (-r switch) and/or be sorted alphabetically (-s switch).\n\n");
