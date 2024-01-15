@@ -53,7 +53,6 @@ my @table;
 if ( !open( F, ">$opt_o" ) ) { die "Writing error: $!" }
 
 if ( substr( $lignes[0], 0, 10 ) eq '**********' ) {
-print "1111";
     #processing .out file and making table of sequences
 
     my $start = 0;
@@ -175,7 +174,6 @@ print "1111";
 }
 
 else {
-print "AAA";
     if ( substr( $lignes[0], 0, 3 ) eq 'IND' ) {
 
         #processing .out_pairs file and making table of sequences
@@ -191,7 +189,6 @@ print "AAA";
         $/ = "\n";
 
         foreach my $ligne (@lignes) {
-print "YYY";
             $ligne =~ s/ -[0-9]* / ? /g;
             my @s = split( ' ', $ligne );
 
@@ -242,9 +239,7 @@ print "YYY";
                         $table[ 2 * $k ][1] = $table[ 2 * $k ][1] . $u[$j];
                     }
                 }
-print "XXX";
                 if ( defined($opt_r) ) {
-print $t[2];
                     if ( $t[2] == '1.00' ) {
                         $table[ 1 + 2 * $k ][0] = $indiv . 'b';
                     }
