@@ -91,6 +91,47 @@ class SeqPhase1Result {
         }
     }
 
+    public function hasAlignErrors(i:Int):Bool {
+        if (i == 1) {
+            return hasAlign1Errors();
+        } else if (i == 2) {
+            return hasAlign2Errors();
+        } else if (i == 3) {
+            return hasAlign2Errors();
+        }
+        return false;
+    }
+    public function getAlignErrors(i:Int):Vector<String> {
+        if (i == 1) {
+            return getAlign1Errors();
+        } else if (i == 2) {
+            return getAlign2Errors();
+        } else if (i == 3) {
+            return getAlign3Errors();
+        }
+        return null;
+    }
+    public function hasAlignWarn(i:Int):Bool {
+        if (i == 1) {
+            return hasAlign1Warn();
+        } else if (i == 2) {
+            return hasAlign2Warn();
+        } else if (i == 3) {
+            return hasAlign3Warn();
+        }
+        return false;
+    }
+    public function getAlignWarn(i:Int):Vector<String> {
+        if (i == 1) {
+            return getAlign1Warn();
+        } else if (i == 2) {
+            return getAlign2Warn();
+        } else if (i == 3) {
+            return getAlign3Warn();
+        }
+        return null;
+    }
+
     public function addAlign1Error(err:String):Void {
         errorsAlign1.add(err);
     }
