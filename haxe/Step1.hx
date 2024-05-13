@@ -62,7 +62,7 @@ class Step1
     }
     
     public static function resetResultArea() {
-        for(i in 0...4) {
+        for(i in 1...4) {
             Browser.document.getElementById("align" + i + "FileErrorsArea").style.display = "none";
             Browser.document.getElementById("align" + i + "FileErrorsList").innerHTML = "";
             Browser.document.getElementById("align" + i + "FileWarningsArea").style.display = "none";

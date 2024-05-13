@@ -1046,10 +1046,6 @@ Step1.copySuggestedCommand = function() {
 	window.document.execCommand("copy");
 };
 Step1.resetResultArea = function() {
-	window.document.getElementById("align" + 0 + "FileErrorsArea").style.display = "none";
-	window.document.getElementById("align" + 0 + "FileErrorsList").innerHTML = "";
-	window.document.getElementById("align" + 0 + "FileWarningsArea").style.display = "none";
-	window.document.getElementById("align" + 0 + "FileWarningsList").innerHTML = "";
 	window.document.getElementById("align" + 1 + "FileErrorsArea").style.display = "none";
 	window.document.getElementById("align" + 1 + "FileErrorsList").innerHTML = "";
 	window.document.getElementById("align" + 1 + "FileWarningsArea").style.display = "none";
