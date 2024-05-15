@@ -1,6 +1,6 @@
 # SeqPHASE
 
-(https://eeg-ebe.github.io/SeqPHASE/)[https://eeg-ebe.github.io/SeqPHASE/]
+https://eeg-ebe.github.io/SeqPHASE/
 
 Code of the haxe re-implementation of the SeqPHASE program. For more information, see the corresponding paper
 
