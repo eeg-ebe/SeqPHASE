@@ -1187,7 +1187,7 @@ Step1.runReadAlign3 = function(align1Content,align2Content) {
 				Step1.run(align1Content,align2Content,fileContent);
 			},0);
 		};
-		reader.readAsText(fObj.files[0]);
+		reader.readAsText(fObj.files[0],"ISO-8859-1");
 	} else {
 		window.setTimeout(function() {
 			Step1.run(align1Content,align2Content,null);
@@ -1204,7 +1204,7 @@ Step1.runReadAlign2 = function(align1Content) {
 				Step1.runReadAlign3(align1Content,fileContent);
 			},0);
 		};
-		reader.readAsText(fObj.files[0]);
+		reader.readAsText(fObj.files[0],"ISO-8859-1");
 	} else if(align1Content == null) {
 		window.alert("Missing input data! Either an alignment of sequences from homozygous individuals and from heterozygotes to be phased or an alignment of fake haplotype pairs from heterozygotes to be phased has to be provided. You can also provide both files!");
 	} else {
@@ -1223,7 +1223,7 @@ Step1.runReadAlign1 = function() {
 				Step1.runReadAlign2(fileContent);
 			},0);
 		};
-		reader.readAsText(fObj.files[0]);
+		reader.readAsText(fObj.files[0],"ISO-8859-1");
 	} else {
 		window.setTimeout(function() {
 			Step1.runReadAlign2(null);

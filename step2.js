@@ -501,7 +501,7 @@ Step2.runReadConstFile = function(sort,reduce,outFileContent) {
 				Step2.run(sort,reduce,outFileContent,constFileContent);
 			},0);
 		};
-		reader.readAsText(constFile.files[0]);
+		reader.readAsText(constFile.files[0],"ISO-8859-1");
 	}
 };
 Step2.runReadOutFile = function(sort,reduce) {
@@ -514,7 +514,7 @@ Step2.runReadOutFile = function(sort,reduce) {
 				Step2.runReadConstFile(sort,reduce,outFileContent);
 			},0);
 		};
-		reader.readAsText(outFileInput.files[0]);
+		reader.readAsText(outFileInput.files[0],"ISO-8859-1");
 	} else {
 		window.alert("Missing .out / .out_pairs file");
 	}
