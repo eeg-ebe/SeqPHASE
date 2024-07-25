@@ -467,6 +467,7 @@ Step2.resetForm = function() {
 	checkbox.checked = true;
 	var checkbox2 = window.document.getElementById("reduceSequences");
 	checkbox2.checked = true;
+	window.document.getElementById("resultArea").style.display = "none";
 };
 Step2.handleResults = function(result) {
 	window.document.getElementById("resultArea").style.display = "block";

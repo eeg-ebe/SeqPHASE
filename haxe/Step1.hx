@@ -53,6 +53,20 @@ class Step1
         textField2.value = "";
         var textField3:js.html.InputElement = cast Browser.document.getElementById("alig3");
         textField3.value = "";
+        Browser.document.getElementById("align1FileErrorsArea").style.display = "none";
+        Browser.document.getElementById("align1FileWarningsArea").style.display = "none";
+        Browser.document.getElementById("align2FileErrorsArea").style.display = "none";
+        Browser.document.getElementById("align2FileWarningsArea").style.display = "none";
+        Browser.document.getElementById("align3FileErrorsArea").style.display = "none";
+        Browser.document.getElementById("align3FileWarningsArea").style.display = "none";
+        Browser.document.getElementById("generalErrorsArea").style.display = "none";
+        Browser.document.getElementById("generalWarningsArea").style.display = "none";
+        Browser.document.getElementById("notesArea").style.display = "none";
+        Browser.document.getElementById("outFileResult").style.display = "none";
+        Browser.document.getElementById("knownFileResult").style.display = "none";
+        Browser.document.getElementById("constFileResult").style.display = "none";
+        Browser.document.getElementById("suggestedCommandArea").style.display = "none";
+        Browser.document.getElementById("proceedArea").style.display = "none";
     }
     
     public static function copySuggestedCommand() {

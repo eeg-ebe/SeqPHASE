@@ -77,6 +77,7 @@ class Step2
         checkbox.checked = true;
         var checkbox2:js.html.InputElement = cast Browser.document.getElementById("reduceSequences");
         checkbox2.checked = true;
+        Browser.document.getElementById("resultArea").style.display = "none";
     }
 
     public static function handleResults(result) {
