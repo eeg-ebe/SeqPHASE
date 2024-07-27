@@ -144,6 +144,7 @@ class Step2
     }
 
     public static function main() {
+        Browser.window.onerror = errFunction;
         var uri = Browser.window.location.search;
         if(uri != null && uri != "") {
             if(StringTools.startsWith(uri, "?")) {

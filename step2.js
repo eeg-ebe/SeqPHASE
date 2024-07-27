@@ -424,6 +424,10 @@ Std.parseInt = function(x) {
 };
 var Step2 = function() { };
 Step2.__name__ = true;
+Step2.errFunction = function(msg,url,line,col,error) {
+	window.alert("Error " + msg + ", line " + line);
+	return null;
+};
 Step2.resetConstFileUpload = function() {
 	window.document.getElementById("passedSpan").style.display = "none";
 	var cell = window.document.getElementById("passedConstFileContent");
@@ -528,6 +532,7 @@ Step2.runJob = function() {
 	Step2.runReadOutFile(sort,reduce);
 };
 Step2.main = function() {
+	window.onerror = Step2.errFunction;
 	var uri = window.location.search;
 	if(uri != null && uri != "") {
 		if(StringTools.startsWith(uri,"?")) {
